@@ -10,7 +10,7 @@ node {
   
   stage 'deploy'
   
-  docker.image('uitestjenkins').withRun('-p 3000:3000'){c ->
+  docker.image('uitestjenkins').withRun{c ->
 	sh "chmod +x -R ${env.WORKSPACE}"
 	sh './jenkins/scripts/deliver.sh'
 	input message: 'Finished using the web site? (Click "Proceed" to continue)'
