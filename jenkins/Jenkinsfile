@@ -1,21 +1,10 @@
 node {
   stage 'Checkout'
-  git 'https://github.com/kazirahiv/jenkins-test'
-  
-  stage 'ui build'
-  def uit = docker.build 'uitestjenkins'
-  
-  stage 'bubble build'
-  def bubble = docker.build 'bubble'
-  
-  stage 'deploy'
+  git url: 'https://github.com/russmckendrick/jenkins-docker-example.git'
 
-  
-  uit.withRun('-p 3000:3000'){c ->
-  sh "chmod +x -R ${env.WORKSPACE}"
-	sh './jenkins/scripts/deliver.sh'
-	input message: 'Finished using the web site? (Click "Proceed" to continue)'
-	sh './jenkins/scripts/kill.sh'
-    sh './test-with-local-db'
-  }
+  stage 'build'
+  docker.build('mobycounter')
+
+  stage 'deploy'
+  sh './jenkins/scripts/d.sh'
 }
