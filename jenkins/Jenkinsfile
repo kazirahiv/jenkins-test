@@ -6,7 +6,7 @@ node {
   def uit = docker.build 'uitestjenkins'
   
   stage 'bubble build'
-  def uit = docker.build 'bubble'
+  def bubble = docker.build 'bubble'
   
   stage 'deploy'
   uit.inside {
