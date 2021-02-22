@@ -4,6 +4,7 @@ node {
 
   stage 'build'
   docker.build('uitestjenkins')
+  docker.build('bubble')
 
   stage 'deploy'
   sh "chmod +x -R ${env.WORKSPACE}"
