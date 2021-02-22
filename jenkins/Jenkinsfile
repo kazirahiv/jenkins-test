@@ -18,6 +18,6 @@ node {
     sh './test-with-local-db'
   }
   
-  docker.image('uitestjenkins').withRun{c ->
+  docker.image('uitestjenkins').withRun('-p 3000:3000'){c ->
   }
 }
