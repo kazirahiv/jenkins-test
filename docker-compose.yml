@@ -7,16 +7,3 @@ services:
         - "3000:3000"
         container_name: UITestJenkins
         stdin_open: true
-        volumes:
-        - .:/app
-        - /app/node_modules
-    bubble:
-        build:
-            context: .
-        ports:
-        - "4000:3000"
-        container_name: UITestBubble
-        stdin_open: true
-        volumes:
-        - .:/app
-        - /app/node_modules
