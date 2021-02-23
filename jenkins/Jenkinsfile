@@ -1,3 +1,14 @@
-checkout scm
-stage "Build Pex"
-sh('docker-compose up -d')
+pipeline {
+  agent {
+    node {
+      label 'Docker-Compose Node'
+    }
+  }
+  stages {
+    stage('Up Compose') {
+      steps {
+        sh 'docker-compose up -d'
+      }
+    }
+  }
+}
