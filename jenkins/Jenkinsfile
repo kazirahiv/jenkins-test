@@ -1,10 +1,3 @@
-pipeline {
-    agent none
-    stages {
-        stage('Back-end') {
-            steps {
-                sh 'docker-compose up -d'
-            }
-        }
-    }
-}
+checkout scm
+stage "Build Pex"
+sh('docker-compose up -d')
