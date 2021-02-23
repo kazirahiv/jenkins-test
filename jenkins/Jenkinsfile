@@ -2,22 +2,7 @@ pipeline {
     agent none
     stages {
         stage('Back-end') {
-            agent {
-                docker { 
-					image 'uitestjenkins' 
-					args '-p 3000:3000'
-				}
-            }
             steps {
-                sh 'npm install'
-            }
-        }
-        stage('Deploy') {
-            agent {
-                docker { image 'uitestjenkins' }
-            }
-            steps {
-                sh "chmod +x -R ${env.WORKSPACE}"
                 sh 'docker-compose up -d'
             }
         }
